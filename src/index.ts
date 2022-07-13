@@ -1,5 +1,5 @@
 import express from 'express';
-//import { runInNewContext } from 'vm';
+import { runInNewContext } from 'vm';
 const app = express();
 const port = 3004;
 
