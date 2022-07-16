@@ -1,27 +1,33 @@
 import express from 'express';
-import {checkFileExists} from './checkfileExists';
-import { runInNewContext } from 'vm';
+import { checkFileExists } from './checkfileExists';
+import { processImage } from './imageprocess';
+//import { runInNewContext } from 'vm';
 const app = express();
-const port = 3016;
+const port = 3020;
 
 app.get('/api', (req,res)=>{
     res.send("Hello World 4");
 });
 
 app.get('/api/images', (req,res)=>{
-    let empty:string = "empty";
     let img_name= new String();
+    let width =  new Number();
+    let height = new Number();
     if(req.query.filename){
         img_name = String(req.query.filename);
     }
     else{
-        img_name= empty;
+        img_name= "empty";
+        res.send("Filename is empty, please enter a filename");
     }
-    const width = req.query.width;
-    const height = req.query.height;
+    width = Number(req.query.width);
+    height  = Number(req.query.height);
     const check = checkFileExists(img_name);
-    console.log(check);
-    res.send("Hi");
+    //res.send(check);
+    if (check == false){
+        processImage(img_name, width, height);
+        res.send("Done");
+    }
 })
 
 app.listen(port, ()=>{
