@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "jasmine": "jasmine",
     "test": "npm run build && npm run jasmine",
     "start": "nodemon src/index.ts",
     "build": "npx tsc",
     "lint": "eslint 'src/index.ts'",
-    "prettier": "prettier --config .prettierrc '*.ts' --write",
-    "jasmine": "jasmine"
+    "prettier": "prettier --config .prettierrc '*.ts' --write"
   },
   "author": "",
   "license": "ISC",

@@ -5,10 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var app = (0, express_1.default)();
-var port = 3002;
+var port = 3011;
 app.get('/api', function (req, res) {
     res.send("Hello World 4");
 });
 app.listen(port, function () {
     console.log("server started at localhost:".concat(port));
 });
+exports.default = app;
