@@ -3,7 +3,7 @@ import { checkFileExists } from './checkfileExists';
 import { processImage } from './imageprocess';
 //import { runInNewContext } from 'vm';
 const app = express();
-const port = 3023;
+const port = 3025;
 const path = require("path");
 
 app.get('/api', (req,res)=>{

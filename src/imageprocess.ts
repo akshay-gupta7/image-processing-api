@@ -8,6 +8,7 @@ const fs = require("fs");
 export function processImage(name: String, wth: Number, hght: Number){
     if(wth==0 || wth ==null || hght ==0 || hght == null){
         console.log("Make sure height and width are numbers greater than 0");
+        return false;
     }
     else{
         if(checkFileExistsinFull(name)==false)
