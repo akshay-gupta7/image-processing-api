@@ -3,8 +3,8 @@ import { checkFileExists } from './checkfileExists';
 import { processImage } from './imageprocess';
 //import { runInNewContext } from 'vm';
 const app = express();
-const port = 3025;
-const path = require("path");
+const port = 3026;
+import path = require("path");
 
 app.get('/api', (req,res)=>{
     res.send("Hello World 4");
@@ -30,11 +30,11 @@ app.get('/api/images', (req,res)=>{
             await processImage(img_name, width, height);
             return;
         }
-        responsefromprocessor().then(result=>{
+        responsefromprocessor().then((result)=>{
             const foldername = path.join(__dirname,"../assets/thumb/");
             console.log(__dirname);
             console.log(foldername);
-            var options = {
+            const options = {
                 root: path.join(__dirname,"../assets/thumb/")
             };
             const filesname = img_name + "_thumb.jpg";
@@ -42,12 +42,12 @@ app.get('/api/images', (req,res)=>{
         });
     }
     else{
-        res.send("File doesn not exist")
+        res.send("File doesn not exist");
     }
-})
+});
 
 app.listen(port, ()=>{
-    console.log(`server started at localhost:${port}`);
+    console.log(`server started at localhost - ${port}`);
 });
 
 export default app;

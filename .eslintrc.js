@@ -4,8 +4,11 @@ module.exports = {
         "es2021": true
     },
     "extends": [
-        "eslint:recommended"
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended"
     ],
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -13,6 +16,7 @@ module.exports = {
         "ecmaVersion": "latest",
         "sourceType": "module"
     },
+    "plugins": ["@typescript-eslint"],
     "rules": {
     }
 }
