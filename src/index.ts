@@ -3,7 +3,7 @@ import { checkFileExists } from './checkfileExists';
 import { processImage } from './imageprocess';
 //import { runInNewContext } from 'vm';
 const app = express();
-const port = 3022;
+const port = 3023;
 const path = require("path");
 
 app.get('/api', (req,res)=>{
@@ -40,6 +40,9 @@ app.get('/api/images', (req,res)=>{
             const filesname = img_name + "_thumb.jpg";
             res.sendFile(filesname, options);
         });
+    }
+    else{
+        res.send("File doesn not exist")
     }
 })
 
