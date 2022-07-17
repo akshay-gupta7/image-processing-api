@@ -3,7 +3,8 @@ import { checkFileExists } from './checkfileExists';
 import { processImage } from './imageprocess';
 //import { runInNewContext } from 'vm';
 const app = express();
-const port = 3021;
+const port = 3022;
+const path = require("path");
 
 app.get('/api', (req,res)=>{
     res.send("Hello World 4");
@@ -25,10 +26,20 @@ app.get('/api/images', (req,res)=>{
     const check = checkFileExists(img_name);
     //res.send(check);
     if (check == false){
-        const responsefromprocessor = processImage(img_name, width, height);
-        const path = "/home/akshay/Desktop/udacity-fullstack-javascript-nanodegree/image-processing-api/assets/thumb/";
-        console.log(path);
-        res.sendFile(path + img_name+"_thumb.jpg");
+        const responsefromprocessor = async() : Promise<void>=>{
+            await processImage(img_name, width, height);
+            return;
+        }
+        responsefromprocessor().then(result=>{
+            const foldername = path.join(__dirname,"../assets/thumb/");
+            console.log(__dirname);
+            console.log(foldername);
+            var options = {
+                root: path.join(__dirname,"../assets/thumb/")
+            };
+            const filesname = img_name + "_thumb.jpg";
+            res.sendFile(filesname, options);
+        });
     }
 })
 

@@ -18,7 +18,7 @@ export function processImage(name: String, wth: Number, hght: Number){
         else{
             const sourcepath = "./assets/full/" + name +".jpg";
             const destpath = "./assets/thumb/" + name +"_thumb.jpg";
-            console.log(sourcepath);
+            //console.log(sourcepath);
             const resizedimage= async (sourcepath: String, wth: Number, hght: Number):Promise<string> =>{
                 try{
                     console.log("here1");
@@ -31,7 +31,7 @@ export function processImage(name: String, wth: Number, hght: Number){
                     return "fail";
                 }
             };
-            return resizedimage(sourcepath, wth, hght);     
+            return resizedimage(sourcepath, wth, hght);
         }
     }
 }
