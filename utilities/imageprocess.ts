@@ -3,7 +3,12 @@ const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
 
-export function processImage(name: string, wth: number, hght: number) {
+export function processImage(
+  name: string,
+  wth: number,
+  hght: number
+): string {
+  let values = '';
   if (
     wth == 0 ||
     wth == null ||
@@ -13,7 +18,7 @@ export function processImage(name: string, wth: number, hght: number) {
     hght < 0
   ) {
     console.log('Make sure height and width are numbers greater than 0');
-    return false;
+    return 'fail';
   } else {
     if (checkFileExistsinFull(name) == false) {
       console.log('File does not exist in folder');
@@ -41,7 +46,11 @@ export function processImage(name: string, wth: number, hght: number) {
           return 'fail';
         }
       };
-      return resizedimage(sourcepath, wth, hght);
+
+      resizedimage(sourcepath, wth, hght).then((value) => {
+        values = value;
+      });
+      return values;
     }
   }
 }
