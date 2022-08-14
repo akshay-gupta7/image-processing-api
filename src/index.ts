@@ -1,9 +1,10 @@
 import express from 'express';
 import { checkFileExists } from '../utilities/checkfileExists';
 import { processImage } from '../utilities/imageprocess';
+
 //import { runInNewContext } from 'vm';
 const app = express();
-const port = 3027;
+const port = 3028;
 import path = require("path");
 
 app.get('/api', (req,res)=>{
@@ -42,7 +43,14 @@ app.get('/api/images', (req,res)=>{
         });
     }
     else{
-        res.send("File doesn not exist");
+        console.log("File already exists in thumb folder");
+        const foldername = path.join(__dirname,"../assets/thumb/");
+        const options = {
+            root: path.join(__dirname,"../assets/thumb/")
+        };
+        const filesname = img_name + "_thumb.jpg";
+        res.sendFile(filesname, options);
+        //res.send("File does already exist");
     }
 });
 
