@@ -1,16 +1,20 @@
 import express from 'express';
+import routes from './routes';
 import { checkFileExists } from '../utilities/checkfileExists';
 import { processImage } from '../utilities/imageprocess';
 
 //import { runInNewContext } from 'vm';
 const app = express();
-const port = 3028;
+const port = 3030;
 import path = require('path');
 
 app.get('/api', (req, res) => {
   res.send('Hello World 4');
 });
 
+app.use('/api/images', routes);
+
+/*
 app.get('/api/images', (req, res) => {
   let img_name = new String();
   let width = new Number();
@@ -51,6 +55,8 @@ app.get('/api/images', (req, res) => {
     //res.send("File does already exist");
   }
 });
+
+*/
 
 app.listen(port, () => {
   console.log(`server started at localhost - ${port}`);

@@ -1,6 +1,6 @@
 import supertest from 'supertest';
 import app from '../index';
-import { processImage } from '../imageprocess';
+//import { processImage } from '.../'
 
 const request = supertest(app);
 
@@ -12,7 +12,10 @@ describe('Test endpoint responses', () => {
   });
 });
 
-it('should return that file does not exist', () => {
-  const value = processImage('and', 0, 0);
-  expect(value).toBe(false);
+describe('Test for resizing', () => {
+  it('test image with correct input', async () => {
+    const response = await request.get('/api/images?images?filename=argentina&width=200&height=200');
+    expect(response.status).toBe(200);
+    //done();
+  });
 });
