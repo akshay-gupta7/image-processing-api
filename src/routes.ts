@@ -34,7 +34,7 @@ routes.get(
         const options = {
           root: path.join(__dirname, '../assets/thumb/')
         };
-        const filesname = img_name + '_thumb.jpg';
+        const filesname = img_name + '_thumb_' + width + "*" + height + ".jpg";
         res.sendFile(filesname, options);
       });
     } else {

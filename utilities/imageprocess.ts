@@ -24,7 +24,7 @@ export function processImage(
       return Promise.resolve('fail');
     } else {
       const sourcepath = './assets/full/' + name + '.jpg';
-      const destpath = './assets/thumb/' + name + '_thumb.jpg';
+      const destpath = './assets/thumb/' + name + '_thumb_' + wth + "*" + hght + ".jpg" ;
       //console.log(sourcepath);
       const resizedimage = async (
         sourcepath: string,
