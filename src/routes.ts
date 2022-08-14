@@ -7,9 +7,9 @@ const routes = express.Router();
 import path = require('path');
 
 routes.get('/', (req, res): void => {
-    let img_name: string = '';
-    let width: number = 0;
-    let height: number = 0;
+    let img_name = '';
+    let width = 0;
+    let height = 0;
     if (req.query.filename) {
       img_name = '' + req.query.filename;
     } else {
