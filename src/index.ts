@@ -5,7 +5,7 @@ import { processImage } from '../utilities/imageprocess';
 
 //import { runInNewContext } from 'vm';
 const app = express();
-const port = 3044;
+const port = 3045;
 import path = require('path');
 
 app.get('/api', (req, res) => {
