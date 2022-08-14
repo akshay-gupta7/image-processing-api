@@ -1,4 +1,4 @@
-export function checkFileExists(name: string) {
+export function checkFileExists(name: string):boolean {
   const path = require('path');
   const fs = require('fs');
   const foldername = path.join(__dirname, '../assets/thumb/');
@@ -10,4 +10,4 @@ export function checkFileExists(name: string) {
   } else {
     return false;
   }
-}
+} 
