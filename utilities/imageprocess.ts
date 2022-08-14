@@ -14,17 +14,20 @@ export function processImage(
     hght == 0 ||
     hght == null ||
     wth < 0 ||
-    hght < 0
+    hght < 0 ||
+    isNaN(wth) ||
+    isNaN(hght)
   ) {
     console.log('Make sure height and width are numbers greater than 0');
     return Promise.resolve('fail');
   } else {
     if (checkFileExistsinFull(name) == false) {
       console.log('File does not exist in folder');
-      return Promise.resolve('fail');
+      return Promise.resolve('filenotexist');
     } else {
       const sourcepath = './assets/full/' + name + '.jpg';
-      const destpath = './assets/thumb/' + name + '_thumb_' + wth + "*" + hght + ".jpg" ;
+      const destpath =
+        './assets/thumb/' + name + '_thumb_' + wth + '*' + hght + '.jpg';
       //console.log(sourcepath);
       const resizedimage = async (
         sourcepath: string,

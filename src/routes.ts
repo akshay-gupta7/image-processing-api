@@ -20,21 +20,27 @@ routes.get(
     }
     width = Number(req.query.width);
     height = Number(req.query.height);
-    const check = checkFileExists(img_name);
+    const check = checkFileExists(img_name, width, height);
     //res.send(check);
     if (check == false) {
-      const responsefromprocessor = async (): Promise<void> => {
-        await processImage(img_name, width, height);
-        return;
+      const responsefromprocessor = async (): Promise<string> => {
+        return await processImage(img_name, width, height);
       };
       responsefromprocessor().then((result) => {
+        if (result == 'fail') {
+          res.send('Enter width, height which are greater than 0 numbers');
+        }
+        if (result == 'filenotexist') {
+          res.send('Please enter a valid name of file that exists');
+        }
         const foldername = path.join(__dirname, '../assets/thumb/');
         console.log(__dirname);
         console.log(foldername);
         const options = {
           root: path.join(__dirname, '../assets/thumb/')
         };
-        const filesname = img_name + '_thumb_' + width + "*" + height + ".jpg";
+        const filesname =
+          img_name + '_thumb_' + width + '*' + height + '.jpg';
         res.sendFile(filesname, options);
       });
     } else {
@@ -43,7 +49,7 @@ routes.get(
       const options = {
         root: path.join(__dirname, '../assets/thumb/')
       };
-      const filesname = img_name + '_thumb.jpg';
+      const filesname = img_name + '_thumb_' + width + '*' + height + '.jpg';
       res.sendFile(filesname, options);
       //res.send("File does already exist");
     }

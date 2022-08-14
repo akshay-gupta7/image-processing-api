@@ -1,8 +1,12 @@
-export function checkFileExists(name: string):boolean {
+export function checkFileExists(
+  name: string,
+  wth: number,
+  hght: number
+): boolean {
   const path = require('path');
   const fs = require('fs');
   const foldername = path.join(__dirname, '../assets/thumb/');
-  const filename = foldername + name + '_thumb.jpg';
+  const filename = foldername + name + '_thumb_' + wth + '*' + hght + '.jpg';
   console.log('Path is');
   console.log(filename);
   if (fs.existsSync(filename)) {
@@ -10,4 +14,4 @@ export function checkFileExists(name: string):boolean {
   } else {
     return false;
   }
-} 
+}

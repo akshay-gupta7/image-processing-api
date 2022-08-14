@@ -9,4 +9,4 @@ export function checkFileExistsinFull(name: string): boolean {
   } else {
     return false;
   }
-} 
+}
