@@ -9,7 +9,7 @@
     "start": "nodemon src/index.ts",
     "build": "npx tsc",
     "lint": "eslint '**/*.ts'",
-    "prettier": "prettier --config .prettierrc '*.ts' --write"
+    "prettier": "prettier --config .prettierrc '**/*.ts' --write"
   },
   "author": "",
   "license": "ISC",
