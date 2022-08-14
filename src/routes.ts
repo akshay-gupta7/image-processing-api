@@ -6,7 +6,7 @@ const routes = express.Router();
 //const port = 3028;
 import path = require('path');
 
-routes.get('/', (req, res): void => {
+routes.get('/', async(req: express.Request, res: express.Response): Promise<void> => {
   let img_name = '';
   let width = 0;
   let height = 0;
