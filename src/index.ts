@@ -1,6 +1,6 @@
 import express from 'express';
-import { checkFileExists } from './checkfileExists';
-import { processImage } from './imageprocess';
+import { checkFileExists } from '../utilities/checkfileExists';
+import { processImage } from '../utilities/imageprocess';
 //import { runInNewContext } from 'vm';
 const app = express();
 const port = 3026;

@@ -44,7 +44,7 @@ var checkfileExists_1 = require("./checkfileExists");
 var imageprocess_1 = require("./imageprocess");
 //import { runInNewContext } from 'vm';
 var app = (0, express_1.default)();
-var port = 3025;
+var port = 3026;
 var path = require("path");
 app.get('/api', function (req, res) {
     res.send("Hello World 4");
@@ -91,6 +91,6 @@ app.get('/api/images', function (req, res) {
     }
 });
 app.listen(port, function () {
-    console.log("server started at localhost:".concat(port));
+    console.log("server started at localhost - ".concat(port));
 });
 exports.default = app;
