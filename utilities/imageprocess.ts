@@ -3,7 +3,7 @@ const sharp = require('sharp');
 const path = require('path');
 const fs = require('fs');
 
-export function processImage(name: String, wth: Number, hght: Number) {
+export function processImage(name: string, wth: number, hght: number) {
   if (
     wth == 0 ||
     wth == null ||
@@ -23,9 +23,9 @@ export function processImage(name: String, wth: Number, hght: Number) {
       const destpath = './assets/thumb/' + name + '_thumb.jpg';
       //console.log(sourcepath);
       const resizedimage = async (
-        sourcepath: String,
-        wth: Number,
-        hght: Number
+        sourcepath: string,
+        wth: number,
+        hght: number
       ): Promise<string> => {
         try {
           console.log('here1');
