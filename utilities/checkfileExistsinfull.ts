@@ -1,4 +1,4 @@
-export function checkFileExistsinFull(name: string) {
+export function checkFileExistsinFull(name: string): boolean {
   const path = require('path');
   const foldername = path.join(__dirname, '../assets/full/');
   const fs = require('fs');
@@ -9,4 +9,4 @@ export function checkFileExistsinFull(name: string) {
   } else {
     return false;
   }
-}
+} 
