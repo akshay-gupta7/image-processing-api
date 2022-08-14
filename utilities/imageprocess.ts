@@ -7,8 +7,7 @@ export function processImage(
   name: string,
   wth: number,
   hght: number
-): string {
-  let values = '';
+): Promise<string> {
   if (
     wth == 0 ||
     wth == null ||
@@ -18,11 +17,11 @@ export function processImage(
     hght < 0
   ) {
     console.log('Make sure height and width are numbers greater than 0');
-    return 'fail';
+    return Promise.resolve('fail');
   } else {
     if (checkFileExistsinFull(name) == false) {
       console.log('File does not exist in folder');
-      return 'fail';
+      return Promise.resolve('fail');
     } else {
       const sourcepath = './assets/full/' + name + '.jpg';
       const destpath = './assets/thumb/' + name + '_thumb.jpg';
@@ -47,10 +46,8 @@ export function processImage(
         }
       };
 
-      resizedimage(sourcepath, wth, hght).then((value) => {
-        values = value;
-      });
-      return values;
+      return Promise.resolve(resizedimage(sourcepath, wth, hght));
+      //return values;
     }
   }
 }
