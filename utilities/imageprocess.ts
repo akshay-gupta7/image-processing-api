@@ -25,10 +25,14 @@ export function processImage(
       console.log('File does not exist in folder');
       return Promise.resolve('filenotexist');
     } else {
-      const sourcepath = './assets/full/' + name + '.jpg';
-      const destpath =
-        './assets/thumb/' + name + '_thumb_' + wth + '*' + hght + '.jpg';
-      //console.log(sourcepath);
+      const path =require('path');
+      const sourcepathfolder =  path.join(__dirname, '../assets/full/');
+      const destpathfolder = path.join(__dirname, '../assets/thumb/');
+      const sourcepathfile = sourcepathfolder + name + '.jpg';
+      const destpathfile = destpathfolder + name + '_thumb_' + wth + '*' + hght + '.jpg';
+      console.log('Source & Destination paths are');
+      console.log(sourcepathfile);
+      console.log(destpathfile);
       const resizedimage = async (
         sourcepath: string,
         wth: number,
@@ -39,7 +43,7 @@ export function processImage(
           await sharp(sourcepath)
             .resize(wth, hght)
             .toFormat('jpeg', { mozjpeg: true })
-            .toFile(destpath);
+            .toFile(destpathfile);
           console.log('successful');
           return 'succcess';
         } catch (error) {
@@ -49,7 +53,7 @@ export function processImage(
         }
       };
 
-      return Promise.resolve(resizedimage(sourcepath, wth, hght));
+      return Promise.resolve(resizedimage(sourcepathfile, wth, hght));
       //return values;
     }
   }
